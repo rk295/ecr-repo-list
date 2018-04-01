@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ -n "$REGISTRY_ID" ]]; then
+    echo "Templating config.js with REGISTRY_ID=$REGISTRY_ID"
+    sed -ie "s/REPLACE_ME/$REGISTRY_ID/g" static/js/config.js
+fi
+
 exec gunicorn \
     --workers 10 \
     --timeout=120  \
