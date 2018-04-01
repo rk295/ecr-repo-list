@@ -1,0 +1,36 @@
+<div class="table-responsive">
+<table class="table table-striped table-bordered medium"><tbody>
+<thead class="thead-light">
+    <tr>
+        <th>Digest</th>
+        <th>Created Date</th>
+        <th>Size</th>
+        <th>Tags</th>
+    </tr>
+</thead>
+<tbody>
+    {{#each imageDetails}}
+    {{#this}}
+    <tr>
+        <td class="sha">
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                 <span class="input-group-text" id="inputGroup-sizing-sm">
+                     <img class="btn" src="static/assets/clippy.svg" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{repositoryName}}">
+                 </span>
+              </div>
+                <input type="text" class="form-control" id="sha-{{@index}}-{{repositoryName}}" value="{{imageDigest}}">
+            </div>
+        </td>
+        <td>{{dateFormatter imagePushedAt}}</td>
+        <td>{{humanFileSize imageSizeInBytes false}}</td>
+        <td>
+            {{#each imageTags}}
+            <span class="badge badge-info">{{this}}</span>
+            {{/each}}
+        </td>
+    </tr>
+    {{/this}}
+    {{/each}}
+</tbody></table>
+</div>
