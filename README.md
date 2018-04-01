@@ -30,7 +30,7 @@ You should replace `REPLACE_ME` with the [Amazon ECR] registry id of your regist
 
 The Python API has a few requirements which need installing first. I make use of a virtual environment to isolate these from the rest of my system.
 
-A simple bash script is provided in the root of this repo to run an instance of [Gunicorn] with the API. The API self hosts the UI, so browsing to `http://localhost:8080` after running `run` will show the UI.
+A simple bash script is provided in the root of this repo to run an instance of [Gunicorn] with the API. The API hosts the UI, so browsing to `http://localhost:8080` after running `run` will show the UI.
 
 If you wish to run standalone, a virtualenv is suggested. Simply create one, then `pip install -r requirements.txt` to include the dependencies. An example run is shown below:
 
