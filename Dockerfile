@@ -14,6 +14,8 @@ COPY static /app/static
 COPY main.py /app/
 COPY run /app/
 
+RUN chown -Rv gunicorn: /app
+
 WORKDIR /app
 USER gunicorn
 EXPOSE 8080/tcp
