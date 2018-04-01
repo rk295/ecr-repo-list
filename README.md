@@ -4,15 +4,18 @@ This is a quick web interface I threw together to list the repositories, and the
 
 It was primarily written to allow people in the organisation to view the list of different types of containers we hold in our registry and what tags we have for a given container. It lacks any form of authentication, so you should make appropriate considerations around security of the data shown. We run this behind our firewall but with no other authentication.
 
-## API
+API
+---
 
 The API is a simple [Flask] web app, mostly it is a proxy to the [Boto3] methods `describe_repositories` and `describe_images`. Unlike the Boto methods this API does not support pagination, before sending the response to the client all pages of the response are collated together. This design decision was based around my current `$work` only having a hundred or so repositories, and only very few of the repos have more than a few hundred containers in them. I felt this produced a simpler UX for the intended users, simply showing all the responses on one page. At a later date I might support pagination in the UI, if it becomes apparent it really needs it. PR's welcome!
 
-## UI
+UI
+--
 
 The UI is built using [Bootstrap] V4 with [Handlebars] used for templating, [JQuery] is used to fetch the JSON from the API.
 
-# Config
+Config
+======
 
 There is only really one thing to configure, in the file `static/js/config.js` the first line reads:
 
@@ -22,11 +25,11 @@ var registryID = 'REPLACE_ME';
 
 You should replace `REPLACE_ME` with the [Amazon ECR] registry id of your registry. *Note*: if using the docker, you can pass an environment variable named `REGISTRY_ID` via the docker `-e` option.
 
-# Running
+Running
+=======
 
-
-
-## Standalone
+Standalone
+----------
 
 The Python API has a few requirements which need installing first. I make use of a virtual environment to isolate these from the rest of my system.
 
@@ -74,7 +77,8 @@ The virtual environment is now ready to run the server. Make sure you've made th
 ended with ctrl-c
 ```
 
-## Docker
+Docker
+------
 
 A `Dockerfile` is included in the root of the repo, this is the way I run the server. It is the file used to create [this](https://hub.docker.com/r/rk295/ecr-repo-list/) container.
 
