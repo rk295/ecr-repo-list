@@ -1,4 +1,3 @@
-var registryID = '226617721124';
 
 $(document).ready(function(){
     HandlebarsIntl.registerWith(Handlebars);
