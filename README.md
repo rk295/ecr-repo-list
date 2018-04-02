@@ -18,6 +18,8 @@ Repo listing
 Code
 ====
 
+The app is split into two parts, a Python API and a JS/Html UI.
+
 API
 ---
 
