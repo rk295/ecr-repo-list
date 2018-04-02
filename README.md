@@ -4,6 +4,20 @@ This is a quick web interface I threw together to list the repositories, and the
 
 It was primarily written to allow people in the organisation to view the list of different types of containers we hold in our registry and what tags we have for a given container. It lacks any form of authentication, so you should make appropriate considerations around security of the data shown. We run this behind our firewall but with no other authentication.
 
+Screenshots
+===========
+
+index
+-----
+![Example of the homepage](screenshots/index.png "Example of the homepage")
+
+Repo listing
+------------
+![Example of a repository list](screenshots/repo-list.png "Example of a repository list")
+
+Code
+====
+
 API
 ---
 
@@ -84,10 +98,10 @@ A `Dockerfile` is included in the root of the repo, this is the way I run the se
 
 A few variables are required to be parsed to the container:
 
-* `AWS_ACCESS_KEY_ID` - AWS Access key 
-* `AWS_SECRET_ACCESS_KEY` - AWS Secret key
-* `AWS_DEFAULT_REGION` - Default AWS region
-* `REGISTRY_ID` - ID of the registry to browse
+*  `AWS_ACCESS_KEY_ID` - AWS Access key 
+*  `AWS_SECRET_ACCESS_KEY` - AWS Secret key
+*  `AWS_DEFAULT_REGION` - Default AWS region
+*  `REGISTRY_ID` - ID of the registry to browse
 
 If this code is executing on an EC2 instance in some way (either directly, or under Docker/Kubernetes/ECS) then don't set the first two and rely on an IAM Role, its much better!
 
