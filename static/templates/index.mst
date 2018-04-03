@@ -6,6 +6,7 @@
 <div id="accordion">
 {{#each repositories}}
 {{#this}}
+<a href="#{{repositoryName}}">
   <div class="card" class="row">
     <div class="card-header" id="header-{{replaceSlash repositoryName}}">
       <h5 class="mb-0">
@@ -15,8 +16,7 @@
         </button>
       </h5>
     </div>
-
-    <div id="details-{{repositoryName}}" class="collapse" aria-labelledby="header-{{replaceSlash repositoryName}}" data-parent="#accordion">
+    <div id="details-{{repositoryName}}" class="collapse {{#isSelected ../selected repositoryName}}{{/isSelected}}" aria-labelledby="header-{{replaceSlash repositoryName}}" data-parent="#accordion">
       <div class="card-body">
         <div class="table-responsive">
         <table id="repodetails-{{replaceSlash repositoryName}}" class="table table-bordered medium .table-responsive">

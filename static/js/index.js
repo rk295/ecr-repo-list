@@ -4,9 +4,16 @@ $(document).ready(function(){
     new ClipboardJS('.btn');
     // Get the main repo list JSON
     $.get('/api/v1.0/' + registryID + '/repositories', process_repositories);
-});
+    });
 
 function process_repositories(data, status){
+
+    if (location.hash){
+        selectedRepo=location.hash.slice(1);
+        data['selected'] = selectedRepo;
+        console.log("Calling get_repo_details for repo=" + selectedRepo);
+        get_repo_details(selectedRepo)
+    }
 
     $.get('static/templates/index.mst', function(template) {
 
@@ -28,6 +35,11 @@ function process_repositories(data, status){
             get_repo_details(repo_name)
         })
 
+        if (location.hash){
+            var requested_hash = location.hash.slice(1);
+            location.hash = '';
+            location.hash = requested_hash;
+        }
     });
 }
 
