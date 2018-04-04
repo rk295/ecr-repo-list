@@ -33,7 +33,3 @@ Handlebars.registerHelper('dateFormatter', function(rfc822Date) {
 Handlebars.registerHelper('humanFileSize', function(bytes, si) {
     return humanFileSize(bytes, si);
 });
-
-Handlebars.registerHelper('isSelected', function(selectedRepo, currentRepo, ) {
-    return (selectedRepo == currentRepo) ? "show" : "";
-});
