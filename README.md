@@ -9,11 +9,11 @@ Screenshots
 
 index
 -----
-![Example of the homepage](screenshots/index.png "Example of the homepage")
+![Example of the homepage](https://raw.githubusercontent.com/rk295/ecr-repo-list/master/screenshots/index.png "Example of the homepage")
 
 Repo listing
 ------------
-![Example of a repository list](screenshots/repo-list.png "Example of a repository list")
+![Example of a repository list](https://raw.githubusercontent.com/rk295/ecr-repo-list/master/screenshots/repo-list.png "Example of a repository list")
 
 Code
 ====
