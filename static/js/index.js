@@ -4,7 +4,7 @@ $(document).ready(function(){
     new ClipboardJS('.btn');
     // Get the main repo list JSON
     $.get('/api/v1.0/' + registryID + '/repositories', process_repositories);
-});
+    });
 
 function process_repositories(data, status){
 
@@ -22,12 +22,28 @@ function process_repositories(data, status){
         })
         $('#target').append(compiledTemplate(data));
 
+        // If there is a hash in the location, handle that
+        if (location.hash){
+            // Remove the #
+            selectedRepo=location.hash.slice(1);
+            // Get the element, it may contain slashes, so this method is
+            // used rather than $(#...).
+            targetElement = document.getElementById('details-' + selectedRepo)
+            // Add the bootstrap 'show' class to the element.
+            $(targetElement).addClass("show");
+            // Fire off a request to fetch 'this' repos images
+            get_repo_details(selectedRepo)
+            
+            // var requested_hash = location.hash.slice(1);
+            // location.hash = '';
+            // location.hash = requested_hash;
+        }
+
         // Handle the expand card event
         $("[id^=details]").on('show.bs.collapse', function (event) {
             var repo_name = event.target.id.replace("details-", "");
             get_repo_details(repo_name)
         })
-
     });
 }
 
