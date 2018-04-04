@@ -16,7 +16,9 @@
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
                  <span class="input-group-text" id="inputGroup-sizing-sm">
-                     <img class="btn" src="static/assets/clippy.svg" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{repositoryName}}">
+                     <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{repositoryName}}">
+                         <span class="oi oi-clipboard" title="clipboard" aria-hidden="true"></span>
+                     </button>
                  </span>
               </div>
                 <input type="text" class="form-control" id="sha-{{@index}}-{{repositoryName}}" value="{{imageDigest}}">
