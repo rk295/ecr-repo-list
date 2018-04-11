@@ -1,10 +1,10 @@
-
 $(document).ready(function(){
     HandlebarsIntl.registerWith(Handlebars);
     new ClipboardJS('.btn');
     // Get the main repo list JSON
     $.get('/api/v1.0/' + registryID + '/repositories', process_repositories);
-    });
+
+});
 
 function process_repositories(data, status){
 
@@ -13,37 +13,39 @@ function process_repositories(data, status){
         var compiledTemplate = Handlebars.compile(template);
 
         // Add this field to the data so we can display it in the template
-        numberOfRepos = data['repositories'].length
-        data['numberOfRepos'] = numberOfRepos
+        numberOfRepos = data['repositories'].length;
+        data['numberOfRepos'] = numberOfRepos;
 
         // Sorting here means the template doesn't need special handlers
         data['repositories'].sort(function(a, b){
             return a.repositoryName.localeCompare(b.repositoryName);
-        })
+        });
         $('#target').append(compiledTemplate(data));
 
         // If there is a hash in the location, handle that
         if (location.hash){
             // Remove the #
-            selectedRepo=location.hash.slice(1);
+            var requested_hash = location.hash.slice(1);
+            selectedRepo=decodeURIComponent(requested_hash);
+
             // Get the element, it may contain slashes, so this method is
             // used rather than $(#...).
-            targetElement = document.getElementById('details-' + selectedRepo)
+            targetElement = document.getElementById('details-' + selectedRepo);
             // Add the bootstrap 'show' class to the element.
             $(targetElement).addClass("show");
             // Fire off a request to fetch 'this' repos images
-            get_repo_details(selectedRepo)
+            get_repo_details(selectedRepo);
             
-            // var requested_hash = location.hash.slice(1);
-            // location.hash = '';
-            // location.hash = requested_hash;
+            location.hash = '';
+            location.hash = requested_hash;
         }
 
         // Handle the expand card event
         $("[id^=details]").on('show.bs.collapse', function (event) {
             var repo_name = event.target.id.replace("details-", "");
-            get_repo_details(repo_name)
-        })
+            window.location.hash = encodeURIComponent(repo_name);
+            get_repo_details(repo_name);
+        });
     });
 }
 
@@ -76,7 +78,7 @@ function process_repo_details(data, status){
 
         data['imageDetails'].sort(function(a, b){
             return parseFloat(b.imagePushedAt) - parseFloat(a   .imagePushedAt);
-        })
+        });
 
         $('#repolist-' + safe_repo_name).html(compiledTemplate(data));
     });
