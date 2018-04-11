@@ -11,7 +11,7 @@ Handlebars.registerHelper ('truncate', function (str, len) {
             }
         }
 
-        if ( new_str == '' ) {
+        if ( new_str === '' ) {
             new_str = str.substr ( 0, len );
         }
 
@@ -32,4 +32,8 @@ Handlebars.registerHelper('dateFormatter', function(rfc822Date) {
 
 Handlebars.registerHelper('humanFileSize', function(bytes, si) {
     return humanFileSize(bytes, si);
+});
+
+Handlebars.registerHelper('encode', function(string) {
+	return encodeURIComponent( string );
 });
