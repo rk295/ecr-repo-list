@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    HandlebarsIntl.registerWith(Handlebars);
     new ClipboardJS('.btn');
     // Get the main repo list JSON
     $.get('/api/v1.0/' + registryID + '/repositories', process_repositories);
