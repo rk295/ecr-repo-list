@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# See https://github.com/golang/go/blob/master/src/cmd/dist/build.go#L58-L89
+# for full list of supported OS and ARCH types. Defaults to Linux/amd64
+# 
+# For mac you probably want GOOS=darwin and GOARCH=amd64
+
+: "${GOOS:=linux}
+: "${GOARCH:=amd64}
+
+echo "Building with GOOS=$GOOS and GOARCH=$GOARCH"
+env GOOS="$GOOS" GOARCH="$GOARCH" go build main.go
