@@ -3,3 +3,5 @@
 __pycache__/
 docker-run
 venv/
+main
+.vscode
