@@ -5,13 +5,4 @@ if [[ -n "$REGISTRY_ID" ]]; then
     sed -ie "s/REPLACE_ME/$REGISTRY_ID/g" static/js/config.js
 fi
 
-exec gunicorn \
-    --workers 10 \
-    --timeout=120  \
-    --error-log - \
-    --access-logfile - \
-    --env AWS_DEFAULT_REGION="$AWS_DEFAULT_REGION" \
-    --env AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" \
-    --env AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" \
-    --bind 0.0.0.0:8080 \
-    main:app
+exec go run main.go
