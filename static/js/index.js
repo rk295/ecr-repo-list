@@ -12,12 +12,12 @@ function process_repositories(data, status){
         var compiledTemplate = Handlebars.compile(template);
 
         // Add this field to the data so we can display it in the template
-        numberOfRepos = data['repositories'].length;
+        numberOfRepos = data['Repositories'].length;
         data['numberOfRepos'] = numberOfRepos;
 
         // Sorting here means the template doesn't need special handlers
-        data['repositories'].sort(function(a, b){
-            return a.repositoryName.localeCompare(b.repositoryName);
+        data['Repositories'].sort(function(a, b){
+            return a.RepositoryName.localeCompare(b.RepositoryName);
         });
         $('#target').append(compiledTemplate(data));
 
@@ -58,15 +58,21 @@ function process_repo_details(data, status){
     repo_name = this.url.replace(/.*repository\//, "");
     safe_repo_name = repo_name.replace(/\//, "-");
 
+    // Handle the case where the ImageDetails list is set
+    // to null by the API
+    if ( data['ImageDetails'] === null ){
+        data['ImageDetails'] = [];
+    }
+
     $.get('static/templates/repo-list.mst', function(template) {
         var compiledTemplate = Handlebars.compile(template);
 
-        numberOfContainers = data['imageDetails'].length;
+        numberOfContainers = data['ImageDetails'].length;
 
 
         var totalSizeBytes=0;
-        data['imageDetails'].forEach(function total(item) {
-            totalSizeBytes += item['imageSizeInBytes'];
+        data['ImageDetails'].forEach(function total(item) {
+            totalSizeBytes += item['ImageSizeInBytes'];
         });
 
         totalSize = humanFileSize(totalSizeBytes, false);
@@ -75,7 +81,7 @@ function process_repo_details(data, status){
         $('#imageCountBadge-' + safe_repo_name).html(numberOfContainers);
         $('#imageSizeBadge-' + safe_repo_name).html(totalSize);
 
-        data['imageDetails'].sort(function(a, b){
+        data['ImageDetails'].sort(function(a, b){
             return parseFloat(b.imagePushedAt) - parseFloat(a   .imagePushedAt);
         });
 

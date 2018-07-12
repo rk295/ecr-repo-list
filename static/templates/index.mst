@@ -4,43 +4,43 @@
     created data, size and labels) and some details about the repo.</p>
 
 <div id="accordion">
-{{#each repositories}}
+{{#each Repositories}}
 {{#this}}
-<a href="#{{encode repositoryName}}" id="anchor"></a>
+<a href="#{{encode RepositoryName}}" id="anchor"></a>
   <div class="card" class="row">
-    <div class="card-header" id="header-{{replaceSlash repositoryName}}">
+    <div class="card-header" id="header-{{replaceSlash RepositoryName}}">
       <h5 class="mb-0">
-        <button id="{{replaceSlash repositoryName}}" class="btn btn-link" data-toggle="collapse" data-target="#details-{{repositoryName}}" aria-expanded="true" aria-controls="{{@key}}">
-            {{repositoryName}}
+        <button id="{{replaceSlash RepositoryName}}" class="btn btn-link" data-toggle="collapse" data-target="#details-{{RepositoryName}}" aria-expanded="true" aria-controls="{{@key}}">
+            {{RepositoryName}}
         </button>
-        <span id="imageCountBadge-{{replaceSlash repositoryName}}" class="badge badge-pill badge-primary"></span>
-        <span id="imageSizeBadge-{{replaceSlash repositoryName}}" class="badge badge-pill badge-success"></span>
+        <span id="imageCountBadge-{{replaceSlash RepositoryName}}" class="badge badge-pill badge-primary"></span>
+        <span id="imageSizeBadge-{{replaceSlash RepositoryName}}" class="badge badge-pill badge-success"></span>
       </h5>
     </div>
-    <div id="details-{{repositoryName}}" class="collapse" aria-labelledby="header-{{replaceSlash repositoryName}}" data-parent="#accordion">
+    <div id="details-{{RepositoryName}}" class="collapse" aria-labelledby="header-{{replaceSlash RepositoryName}}" data-parent="#accordion">
       <div class="card-body">
         <div class="table-responsive">
-        <table id="repodetails-{{replaceSlash repositoryName}}" class="table table-bordered medium .table-responsive">
-            <tr><th style="width:20%">Created At</th><td>{{dateFormatter createdAt}}</td></tr>
+        <table id="repodetails-{{replaceSlash RepositoryName}}" class="table table-bordered medium .table-responsive">
+            <tr><th style="width:20%">Created At</th><td>{{dateFormatter CreatedAt}}</td></tr>
             <tr><th style="width:20%">URI</th>
                 <td>
                     <div class="input-group input-group-sm mb-3">
                       <div class="input-group-prepend">
                          <span class="input-group-text" id="inputGroup-sizing-sm">
-                             <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#uri-{{replaceSlash repositoryName}}">
+                             <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#uri-{{replaceSlash RepositoryName}}">
                                  <span class="oi oi-clipboard" title="clipboard" aria-hidden="true"></span>
                              </button>
                          </span>
                       </div>
-                        <input type="text" class="form-control" id="uri-{{replaceSlash repositoryName}}" value="{{repositoryUri}}">
+                        <input type="text" class="form-control" id="uri-{{replaceSlash RepositoryName}}" value="{{RepositoryUri}}">
                     </div>
                 </td>
             </tr>
-            <tr><th>Image count</th><td id="imageCountTable-{{replaceSlash repositoryName}}">&nbsp;</td></tr>
-            <tr><th>Total Image Size</th><td id="imageSizeTable-{{replaceSlash repositoryName}}">&nbsp;</td></tr>
+            <tr><th>Image count</th><td id="imageCountTable-{{replaceSlash RepositoryName}}">&nbsp;</td></tr>
+            <tr><th>Total Image Size</th><td id="imageSizeTable-{{replaceSlash RepositoryName}}">&nbsp;</td></tr>
         </table>
         </div>
-        <div id="repolist-{{replaceSlash repositoryName}}"></div>
+        <div id="repolist-{{replaceSlash RepositoryName}}"></div>
       </div>
     </div>
   </div>

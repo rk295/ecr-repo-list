@@ -9,25 +9,25 @@
     </tr>
 </thead>
 <tbody>
-    {{#each imageDetails}}
+    {{#each ImageDetails}}
     {{#this}}
     <tr>
         <td class="sha">
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
                  <span class="input-group-text" id="inputGroup-sizing-sm">
-                     <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{replaceSlash repositoryName}}">
+                     <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{replaceSlash RepositoryName}}">
                          <span class="oi oi-clipboard" title="clipboard" aria-hidden="true"></span>
                      </button>
                  </span>
               </div>
-                <input type="text" class="form-control" id="sha-{{@index}}-{{replaceSlash repositoryName}}" value="{{imageDigest}}">
+                <input type="text" class="form-control" id="sha-{{@index}}-{{replaceSlash RepositoryName}}" value="{{ImageDigest}}">
             </div>
         </td>
-        <td>{{dateFormatter imagePushedAt}}</td>
-        <td>{{humanFileSize imageSizeInBytes false}}</td>
+        <td>{{dateFormatter ImagePushedAt}}</td>
+        <td>{{humanFileSize ImageSizeInBytes false}}</td>
         <td>
-            {{#each imageTags}}
+            {{#each ImageTags}}
             <span class="badge badge-info">{{this}}</span>
             {{/each}}
         </td>
