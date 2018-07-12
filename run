@@ -5,4 +5,5 @@ if [[ -n "$REGISTRY_ID" ]]; then
     sed -ie "s/REPLACE_ME/$REGISTRY_ID/g" static/js/config.js
 fi
 
+export GIN_MODE=release
 exec go run main.go
