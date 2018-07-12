@@ -30,6 +30,11 @@ def root():
     return app.send_static_file('index.html')
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return app.send_static_file('assets/favicon.ico')
+
+
 def get_repositories(registry_id):
 
     paginator = client.get_paginator('describe_repositories')
