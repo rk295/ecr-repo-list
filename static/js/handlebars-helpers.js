@@ -22,7 +22,7 @@ Handlebars.registerHelper ('truncate', function (str, len) {
 
 Handlebars.registerHelper('replaceSlash', function(passedString) {
     var theString = passedString.substring(0,150);
-    return new Handlebars.SafeString(passedString.replace('/', '-'));
+    return new Handlebars.SafeString(passedString.replaceAll('/', '-'));
 });
 
 Handlebars.registerHelper('dateFormatter', function(rfc822Date) {
