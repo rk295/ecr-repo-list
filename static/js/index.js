@@ -56,7 +56,7 @@ function get_repo_details(repo_name){
 
 function process_repo_details(data, status){
     repo_name = this.url.replace(/.*repository\//, "");
-    safe_repo_name = repo_name.replace(/\//, "-");
+    safe_repo_name = repo_name.replaceAll("/", "-");
 
     $.get('static/templates/repo-list.mst', function(template) {
         var compiledTemplate = Handlebars.compile(template);
