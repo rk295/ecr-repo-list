@@ -4,6 +4,8 @@ This is a quick web interface I threw together to list the repositories, and the
 
 It was primarily written to allow people in the organisation to view the list of different types of containers we hold in our registry and what tags we have for a given container. It lacks any form of authentication, so you should make appropriate considerations around security of the data shown. We run this behind our firewall but with no other authentication.
 
+As of Jan 2021 I have switched to Python 3 for the container and tidied the requirements to ensure it works ok.
+
 Screenshots
 ===========
 
