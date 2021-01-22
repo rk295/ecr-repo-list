@@ -71,9 +71,12 @@ Collecting botocore==1.9.21 (from -r requirements.txt (line 2))
 Successfully installed Flask-0.12.2 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 boto3-1.6.21 botocore-1.9.21 click-6.7 docutils-0.14 futures-3.2.0 gunicorn-19.7.1 itsdangerous-0.24 jmespath-0.9.3 python-dateutil-2.6.1 s3transfer-0.1.13 six-1.11.0
 %
 ```
-The virtual environment is now ready to run the server. Make sure you've made the single change to `static/js/config.js` mentioned above, and then simply run the `run` cmd:
 
+The virtual environment is now ready to run the server. Make sure you've made the single change to `static/js/config.js` mentioned above. 
 
+You _might_ need to set the `AWS_DEFAULT_REGION` environment variable to the region where the ECR registry is located.
+
+Then simply run the `run` cmd:
 
 ```
 ./run
@@ -100,8 +103,8 @@ A `Dockerfile` is included in the root of the repo, this is the way I run the se
 
 A few variables are required to be parsed to the container:
 
-*  `AWS_ACCESS_KEY_ID` - AWS Access key 
-*  `AWS_SECRET_ACCESS_KEY` - AWS Secret key
+*  `AWS_ACCESS_KEY_ID` - AWS Access key - not required if using an IAM role.
+*  `AWS_SECRET_ACCESS_KEY` - AWS Secret key - not required if using an IAM role.
 *  `AWS_DEFAULT_REGION` - Default AWS region
 *  `REGISTRY_ID` - ID of the registry to browse
 
