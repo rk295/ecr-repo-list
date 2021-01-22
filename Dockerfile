@@ -1,4 +1,3 @@
-# FROM python:2.7-slim-jessie
 FROM python:3.9-buster
 
 LABEL version="1.0"
