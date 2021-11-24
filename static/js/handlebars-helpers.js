@@ -20,9 +20,9 @@ Handlebars.registerHelper ('truncate', function (str, len) {
     return str;
 });
 
-Handlebars.registerHelper('replaceSlash', function(passedString) {
+Handlebars.registerHelper('CSSSafeString', function(passedString) {
     var theString = passedString.substring(0,150);
-    return new Handlebars.SafeString(passedString.replaceAll('/', '-'));
+    return new Handlebars.SafeString(passedString.replaceAll('.', '-').replaceAll('/', '-'));
 });
 
 Handlebars.registerHelper('dateFormatter', function(rfc822Date) {

@@ -6,41 +6,41 @@
 <div id="accordion">
 {{#each repositories}}
 {{#this}}
-<a href="#{{encode repositoryName}}" id="anchor"></a>
+<a href="#{{CSSSafeString repositoryName}}" id="anchor"></a>
   <div class="card" class="row">
-    <div class="card-header" id="header-{{replaceSlash repositoryName}}">
+    <div class="card-header" id="header-{{CSSSafeString repositoryName}}">
       <h5 class="mb-0">
-        <button id="{{replaceSlash repositoryName}}" class="btn btn-link" data-toggle="collapse" data-target="#details-{{repositoryName}}" aria-expanded="true" aria-controls="{{@key}}">
+        <button id="{{CSSSafeString repositoryName}}" class="btn btn-link" data-toggle="collapse" data-target="#details-{{CSSSafeString repositoryName}}" aria-expanded="true" aria-controls="{{@key}}">
             {{repositoryName}}
         </button>
-        <span id="imageCountBadge-{{replaceSlash repositoryName}}" class="badge badge-pill badge-primary"></span>
-        <span id="imageSizeBadge-{{replaceSlash repositoryName}}" class="badge badge-pill badge-success"></span>
+        <span id="imageCountBadge-{{CSSSafeString repositoryName}}" class="badge badge-pill badge-primary"></span>
+        <span id="imageSizeBadge-{{CSSSafeString repositoryName}}" class="badge badge-pill badge-success"></span>
       </h5>
     </div>
-    <div id="details-{{repositoryName}}" class="collapse" aria-labelledby="header-{{replaceSlash repositoryName}}" data-parent="#accordion">
+    <div id="details-{{CSSSafeString repositoryName}}" class="collapse" aria-labelledby="header-{{CSSSafeString repositoryName}}" data-parent="#accordion" data-repoName="{{repositoryName}}">
       <div class="card-body">
         <div class="table-responsive">
-        <table id="repodetails-{{replaceSlash repositoryName}}" class="table table-bordered medium .table-responsive">
+        <table id="repodetails-{{CSSSafeString repositoryName}}" class="table table-bordered medium .table-responsive">
             <tr><th style="width:20%">Created At</th><td>{{dateFormatter createdAt}}</td></tr>
             <tr><th style="width:20%">URI</th>
                 <td>
                     <div class="input-group input-group-sm mb-3">
                       <div class="input-group-prepend">
                          <span class="input-group-text" id="inputGroup-sizing-sm">
-                             <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#uri-{{replaceSlash repositoryName}}">
+                             <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#uri-{{CSSSafeString repositoryName}}">
                                  <span class="oi oi-clipboard" title="clipboard" aria-hidden="true"></span>
                              </button>
                          </span>
                       </div>
-                        <input type="text" class="form-control" id="uri-{{replaceSlash repositoryName}}" value="{{repositoryUri}}">
+                        <input type="text" class="form-control" id="uri-{{CSSSafeString repositoryName}}" value="{{repositoryUri}}">
                     </div>
                 </td>
             </tr>
-            <tr><th>Image count</th><td id="imageCountTable-{{replaceSlash repositoryName}}">&nbsp;</td></tr>
-            <tr><th>Total Image Size</th><td id="imageSizeTable-{{replaceSlash repositoryName}}">&nbsp;</td></tr>
+            <tr><th>Image count</th><td id="imageCountTable-{{CSSSafeString repositoryName}}">&nbsp;</td></tr>
+            <tr><th>Total Image Size</th><td id="imageSizeTable-{{CSSSafeString repositoryName}}">&nbsp;</td></tr>
         </table>
         </div>
-        <div id="repolist-{{replaceSlash repositoryName}}"></div>
+        <div id="repolist-{{CSSSafeString repositoryName}}"></div>
       </div>
     </div>
   </div>
