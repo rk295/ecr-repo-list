@@ -33,7 +33,7 @@ function process_repositories(data, status){
             // Add the bootstrap 'show' class to the element.
             $(targetElement).addClass("show");
             // Fire off a request to fetch 'this' repos images
-            get_repo_details(selectedRepo);
+            get_repo_details(targetElement.getAttribute("data-repoName"));
             
             location.hash = '';
             location.hash = requested_hash;
@@ -41,8 +41,8 @@ function process_repositories(data, status){
 
         // Handle the expand card event
         $("[id^=details]").on('show.bs.collapse', function (event) {
-            var repo_name = event.target.id.replace("details-", "");
-            window.location.hash = encodeURIComponent(repo_name);
+            var repo_name = event.target.getAttribute("data-repoName");
+            window.location.hash = encodeURIComponent(event.target.id.replaceAll("details-", ""));
             get_repo_details(repo_name);
         });
     });
@@ -56,7 +56,7 @@ function get_repo_details(repo_name){
 
 function process_repo_details(data, status){
     repo_name = this.url.replace(/.*repository\//, "");
-    safe_repo_name = repo_name.replaceAll("/", "-");
+    safe_repo_name = repo_name.replaceAll("/", "-").replaceAll(".", "-");
 
     $.get('static/templates/repo-list.mst', function(template) {
         var compiledTemplate = Handlebars.compile(template);

@@ -16,12 +16,12 @@
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
                  <span class="input-group-text" id="inputGroup-sizing-sm">
-                     <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{replaceSlash repositoryName}}">
+                     <button class="btn btn-link btn-sm" alt="Copy to clipboard" data-clipboard-target="#sha-{{@index}}-{{CSSSafeString repositoryName}}">
                          <span class="oi oi-clipboard" title="clipboard" aria-hidden="true"></span>
                      </button>
                  </span>
               </div>
-                <input type="text" class="form-control" id="sha-{{@index}}-{{replaceSlash repositoryName}}" value="{{imageDigest}}">
+                <input type="text" class="form-control" id="sha-{{@index}}-{{CSSSafeString repositoryName}}" value="{{imageDigest}}">
             </div>
         </td>
         <td>{{dateFormatter imagePushedAt}}</td>
